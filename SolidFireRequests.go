@@ -7,8 +7,8 @@ type ListVolumesForAccountRequest struct {
 }
 
 type ListActiveVolumesRequest struct {
-	StartVolumeID int64 `json:"startVolumeID"`
-	Limit         int64 `json:"limit"`
+	StartVolumeID int64 `json:"startVolumeID,omitempty"`
+	Limit         int64 `json:"limit,omitempty"`
 }
 
 type CreateVolumeRequest struct {
@@ -17,7 +17,7 @@ type CreateVolumeRequest struct {
 	TotalSize  int64       `json:"totalSize"`
 	Enable512e bool        `json:"enable512e"`
 	Qos        QoS         `json:"qos,omitempty"`
-	Attributes interface{} `json:"attributes"`
+	Attributes interface{} `json:"attributes,omitempty"`
 }
 
 type DeleteVolumeRequest struct {
@@ -27,20 +27,20 @@ type DeleteVolumeRequest struct {
 type CloneVolumeRequest struct {
 	VolumeID     int64       `json:"volumeID"`
 	Name         string      `json:"name"`
-	NewAccountID int64       `json:"newAccountID"`
-	NewSize      int64       `json:"newSize"`
-	Access       string      `json:"access"`
-	SnapshotID   int64       `json:"snapshotID"`
-	Attributes   interface{} `json:"attributes"`
+	NewAccountID int64       `json:"newAccountID,omitempty"`
+	NewSize      int64       `json:"newSize,omitempty"`
+	Access       string      `json:"access,omitempty"`
+	SnapshotID   int64       `json:"snapshotID,omitempty"`
+	Attributes   interface{} `json:"attributes,omitempty"`
 }
 
 type CreateSnapshotRequest struct {
 	VolumeID                int64       `json:"volumeID"`
-	SnapshotID              int64       `json:"snapshotID"`
-	Name                    string      `json:"name"`
-	EnableRemoteReplication bool        `json:"enableRemoteReplication"`
-	Retention               string      `json:"retention"`
-	Attributes              interface{} `json:"attributes"`
+	SnapshotID              int64       `json:"snapshotID,omitempty"`
+	Name                    string      `json:"name,omitempty"`
+	EnableRemoteReplication bool        `json:"enableRemoteReplication,omitempty"`
+	Retention               string      `json:"retention,omitempty"`
+	Attributes              interface{} `json:"attributes,omitempty"`
 }
 
 type ListSnapshotsRequest struct {
@@ -51,8 +51,8 @@ type RollbackToSnapshotRequest struct {
 	VolumeID         int64       `json:"volumeID"`
 	SnapshotID       int64       `json:"snapshotID"`
 	SaveCurrentState bool        `json:"saveCurrentState"`
-	Name             string      `json:"name"`
-	Attributes       interface{} `json:"attributes"`
+	Name             string      `json:"name,omitempty"`
+	Attributes       interface{} `json:"attributes,omitempty"`
 }
 
 type DeleteSnapshotRequest struct {
